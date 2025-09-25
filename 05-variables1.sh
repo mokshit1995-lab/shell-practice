@@ -10,6 +10,6 @@ END_TIME=$(date +%s)
 
 TOTAL_TIME=$(($END_TIME-$START_TIME))
 
-echo "Script execute time : $TOTAL_TIME"
+echo "Script execute time : $TOTAL_TIME Seconds"
 
 #echo "Timestamp executed: $DATE"
