@@ -43,10 +43,10 @@ else
     echo "Already installed Python3"
 fi
 
-dnf list installed mongodb11 &>>$LOG_FILE
+dnf list installed nginx &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    dnf install mongodb11 -y
-    VALIDATE $? "Mongodb11"
+    dnf install nginx -y
+    VALIDATE $? "Nginx"
 else 
-    echo "Already installed Mongodb11"
+    echo "Already installed Nginx"
 fi
