@@ -1,11 +1,23 @@
 #!/bin/bash
 
+
+LOGS_FOLDER="/var/log/shell-script"
+SCRPIT_NAME=$ ( echo $0 | cut -d "." -f1 )
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
+
+mkdir -p $LOG_FOLDER
+echo "Script started executed at: $(date)"
+
+
+
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
     echo "ERROR:: Please run the script with root privilage"
     exit 1
 fi
+
+
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
@@ -15,7 +27,7 @@ VALIDATE(){
     fi
 }
 
-dnf list installed mysql 
+dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install mysql -y
     VALIDATE $? "MYSQL"
@@ -23,7 +35,7 @@ else
     echo "Already installed Mysql"
 fi
 
-dnf list installed python3
+dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install python3 -y
     VALIDATE $? "Python"
@@ -31,7 +43,7 @@ else
     echo "Already installed Python3"
 fi
 
-dnf list installed mongodb11
+dnf list installed mongodb11 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install mongodb11 -y
     VALIDATE $? "Mongodb11"
