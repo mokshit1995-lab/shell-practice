@@ -10,7 +10,7 @@ fi
 VALIDATE(){
 if [ $1 -eq 0 ]; then
     echo "Already $2 installed"
-else 
+else
     dnf install $2 -y
     if [ $? -eq 0 ]; then
         echo "Installation successfull of $2"
