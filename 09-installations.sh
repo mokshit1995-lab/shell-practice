@@ -12,7 +12,11 @@ if [ $1 -eq 0 ]; then
     echo "Already $2 installed"
 else 
     dnf install $2 -y
-    echo "Installation of $2 is completed"
+    if [ $? -eq 0 ]; then
+        echo "Installation successfull of $2"
+    else
+        echo "Installation Failed for $2"
+    fi
 fi
 }
 
@@ -22,7 +26,7 @@ VALIDATE $? Mysql
 dnf list installed python3  
 VALIDATE $? python3
 
-dnf list installed nginx
-VALIDATE $? nginx
+dnf list installed mongodb111
+VALIDATE $? mongodb111
 
 
