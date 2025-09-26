@@ -38,7 +38,7 @@ fi
 dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install python3 -y
-    VALIDATE $? "Python"
+    VALIDATE $? "Python3"
 else 
     echo "Already installed Python3"
 fi
