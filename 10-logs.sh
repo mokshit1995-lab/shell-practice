@@ -1,15 +1,6 @@
 #!/bin/bash
 
 
-LOGS_FOLDER="/var/log/shell-script"
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
-
-mkdir -p $LOGS_FOLDER
-echo "Script started executed at: $(date)"
-
-
-
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
@@ -17,6 +8,12 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
+LOGS_FOLDER="/var/log/shell-script"
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+
+mkdir -p $LOGS_FOLDER
+echo "Script started executed at: $(date)"
 
 
 VALIDATE(){
