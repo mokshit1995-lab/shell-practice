@@ -8,25 +8,34 @@ if [ $USERID -ne 0 ]; then
 fi
 
 VALIDATE(){
-if [ $1 -eq 0 ]; then
-    echo "Already $2 installed"
-else
-    dnf install $2 -y
-    if [ $? -eq 0 ]; then
-        echo "Installation successfull of $2"
-    else
-        echo "Installation Failed for $2"
+    if [ ($1 -ne 0) ]; then
+        echo "Installation Failure of $2"
+    else 
+        echo "Installation success of $2"
     fi
-fi
 }
 
 dnf list installed mysql 
-VALIDATE $? Mysql
+if [ $? -ne 0 ]; then
+    dnf install mysql -y
+    VALIDATE $? "MYSQL"
+else 
+    echo "Already installed Mysql"
+fi
 
-dnf list installed python3  
-VALIDATE $? python3
+dnf list installed python3
+if [ $? -ne 0 ]; then
+    dnf install python3 -y
+    VALIDATE $? "Python"
+else 
+    echo "Already installed Python3"
+fi
 
-dnf list installed mongodb111
-VALIDATE $? mongodb111
-
+dnf list installed mongodb11
+if [ $? -ne 0 ]; then
+    dnf install mongodb11 -y
+    VALIDATE $? "Mongodb11"
+else 
+    echo "Already installed Mongodb11"
+fi
 
