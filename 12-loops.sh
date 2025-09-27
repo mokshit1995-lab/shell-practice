@@ -33,7 +33,7 @@ do
     if [ $? -eq 0 ]; then
         echo "Package $package already installed"
     else
-        dnf install $package &>>$LOG_FILE
+        dnf install $package -y &>>$LOG_FILE
         echo "Installation successfull of $package"
     fi
 done
