@@ -34,5 +34,6 @@ do
         echo "Package $package already installed"
     else
         dnf install $package &>>$LOG_FILE
+        echo "Installation successfull of $package"
     fi
 done
