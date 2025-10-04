@@ -30,7 +30,11 @@ else
     FILE_NAME=$(find / -name "$FILE_OR_DIR")
     if [ $? = 0 ]; then
         echo "$FILE_OR_DIR Exist"
-        
+        access_file=$(stat -c "%a"  $FILE_OR_DIR)
+        owner_acc=$("${access_file}" | cut -c 1)
+        group_acc=$("${access_file}" | cut -c 2)
+        other_acc=$("${access_file}" | cut -c 3)
+        if 
 fi
 
 
